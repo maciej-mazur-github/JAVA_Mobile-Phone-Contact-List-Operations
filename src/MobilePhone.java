@@ -113,4 +113,43 @@ public class MobilePhone {
             return null;
         }
     }
+
+    private void printActions() {
+        System.out.println("\nPress:");
+        System.out.println("\t0 - to print available choice list");
+        System.out.println("\t1 - to print the current Contact List content");
+        System.out.println("\t2 - to add a new contact");
+        System.out.println("\t3 - to modify the existing contact");
+        System.out.println("\t4 - to delete the existing contact");
+        System.out.println("\t5 - to search for an existing contact");
+        System.out.println("\t6 - to quit the program");
+    }
+
+
+
+    public void runMobilePhone() {
+        System.out.println("\nWelcome to Mobile Phone contact list operations simulation program. Your phone number is " + myPhoneNumber);
+        System.out.println("**********************************");
+        printActions();
+        boolean quit = false;
+        int choice;
+
+        while (!quit) {
+            System.out.print("What action do you choose? ");
+            choice = scanner.nextInt();
+
+            if(choice < 0 || choice > 6) {
+                System.out.println("Invalid choice number. Try again...");
+                continue;
+            }
+
+            switch (choice) {
+                case 0:
+                    printActions();
+                    break;
+                case 1:
+
+            }
+        }
+    }
 }
