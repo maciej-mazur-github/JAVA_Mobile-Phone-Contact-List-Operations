@@ -21,7 +21,7 @@ public class MobilePhone {
     }
 
     private boolean addNewContact(String name, String phoneNumber) {
-        Contact contact = Contact.createNewContact(name, phoneNumber);
+        Contact contact = new Contact(name, phoneNumber);
         return addNewContact(contact);
     }
 
@@ -64,7 +64,7 @@ public class MobilePhone {
         String newName = scanner.nextLine();
         System.out.print("Enter the new phone number: ");
         String newPhoneNumber = scanner.nextLine();
-        Contact newContact = Contact.createNewContact(newName, newPhoneNumber);
+        Contact newContact = new Contact(newName, newPhoneNumber);
         updateContact(existingContact, newContact);
         System.out.println("The old contact (" + existingName + ", " + existingPhoneNumber + ") has been successfully updated to (" +
                 newName + ", " + newPhoneNumber + ")");
@@ -204,8 +204,8 @@ public class MobilePhone {
             return phoneNumber;
         }
 
-        public static Contact createNewContact(String name, String phoneNumber) {
+        /*public static new Contact(String name, String phoneNumber) {
             return new Contact(name, phoneNumber);
-        }
+        }*/
     }
 }
