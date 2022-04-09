@@ -114,6 +114,19 @@ public class MobilePhone {
         }
     }
 
+    private void queryContact() {
+        System.out.print("Enter the name of the contact you would like to check out whether it exists in your Contact List or not: ");
+        String searchedName = scanner.nextLine();
+        Contact searchedContact = queryContact(searchedName);
+
+        if(searchedContact == null) {
+            System.out.println("The contact with the name of " + searchedName + " does not exist in your Contact List");
+        } else {
+            System.out.println("The contact you are looking for exists in your Contact List: " +
+                                searchedName + ", " + searchedContact.getPhoneNumber());
+        }
+    }
+
     private void printActions() {
         System.out.println("\nPress:");
         System.out.println("\t0 - to print available choice list");
@@ -125,7 +138,11 @@ public class MobilePhone {
         System.out.println("\t6 - to quit the program");
     }
 
-
+    private void printContactList() {
+        for(int i = 0; i < contactList.size(); i++) {
+            System.out.println("Contact #" + (i + 1) + ": " + contactList.get(i).getName() + ", " + contactList.get(i).getPhoneNumber());
+        }
+    }
 
     public void runMobilePhone() {
         System.out.println("\nWelcome to Mobile Phone contact list operations simulation program. Your phone number is " + myPhoneNumber);
@@ -138,17 +155,31 @@ public class MobilePhone {
             System.out.print("What action do you choose? ");
             choice = scanner.nextInt();
 
-            if(choice < 0 || choice > 6) {
-                System.out.println("Invalid choice number. Try again...");
-                continue;
-            }
-
             switch (choice) {
                 case 0:
                     printActions();
                     break;
                 case 1:
-
+                    printContactList();
+                    break;
+                case 2:
+                    addNewContact();
+                    break;
+                case 3:
+                    updateContact();
+                    break;
+                case 4:
+                    removeContact();
+                    break;
+                case 5:
+                    queryContact();
+                    break;
+                case 6:
+                    System.out.println("You have decided to quit the program. See you again soon...");
+                    quit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice number. Try again...");
             }
         }
     }
