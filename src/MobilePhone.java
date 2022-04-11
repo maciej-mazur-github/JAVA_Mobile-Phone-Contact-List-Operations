@@ -139,9 +139,17 @@ public class MobilePhone {
     }
 
     private void printContactList() {
+        if(contactList.size() == 0) {
+            System.out.println("You have no contacts saved in your Contact List yet. Try adding some first.");
+            return;
+        } else {
+            System.out.println("\nThe number of contacts in your Contact List now is " + contactList.size() + ". This is the list:");
+            System.out.println("****************************************");
+        }
         for(int i = 0; i < contactList.size(); i++) {
             System.out.println("Contact #" + (i + 1) + ": " + contactList.get(i).getName() + ", " + contactList.get(i).getPhoneNumber());
         }
+        System.out.println("****************************************");
     }
 
     public void runMobilePhone() {
@@ -152,8 +160,9 @@ public class MobilePhone {
         int choice;
 
         while (!quit) {
-            System.out.print("What action do you choose? ");
+            System.out.print("\nWhat action do you choose? (0 to print the available options) :  ");
             choice = scanner.nextInt();
+            scanner.nextLine();  // to clear the scanner buffer
 
             switch (choice) {
                 case 0:
@@ -203,9 +212,5 @@ public class MobilePhone {
         public String getPhoneNumber() {
             return phoneNumber;
         }
-
-        /*public static new Contact(String name, String phoneNumber) {
-            return new Contact(name, phoneNumber);
-        }*/
     }
 }
